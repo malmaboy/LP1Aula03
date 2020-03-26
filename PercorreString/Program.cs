@@ -6,20 +6,29 @@ namespace PercorreString
     {
         static void Main(string[] args)
         {
-            string yo, mee;
+            // Variaveis 
+            string frase, carStr;
+            char carAEvitar;
             
-
+            // Solicitação da frase
             Console.WriteLine("Insira uma frase: ");
-            yo = Console.ReadLine();
-            
-            Console.WriteLine("Insira um carater: ");
-            mee = Console.ReadLine();
+            frase = Console.ReadLine();
 
-            foreach (char me in yo)
+            //Solicitação do carater
+            Console.WriteLine("Insira um carater: ");
+            carStr = Console.ReadLine();
+
+            //Converter o carater em string
+
+            carAEvitar = Convert.ToChar(carStr);
+
+            //Imprimir frase,exceto o carater escolhido
+            foreach (char carAtual in frase)
             {
-                if (me != mee)
+                if (carAtual != carAEvitar)
                 {
-                    Console.WriteLine(me);
+                    // Em caso afirmativo, mostrar no ecrã
+                    Console.WriteLine(carAtual);
                 }
             }
             Console.WriteLine();

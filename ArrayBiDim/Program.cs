@@ -6,49 +6,78 @@ namespace ArrayBiDim
     {
         static void Main(string[] args)
         {
-            string me;
-            int linhas, colunas;
-            int media, soma;
+            // Variáveis
+            int numLinhas, numColunas;
+            string aux;
+            float[,] matriz;
+            float somaDasMedias = 0;
 
-            Console.WriteLine("Insira o tamanho do linhas: ");
-            me = Console.ReadLine();
-            linhas = int.Parse(me);
+            // Pedir nº de linhas e converter para inteiro
+            Console.Write("Insira nº de linhas da matriz: ");
+            aux = Console.ReadLine();
+            numLinhas = Convert.ToInt32(aux);
 
-            Console.WriteLine("Insira o tamanho de colunas: ");
-            me = Console.ReadLine();
-            colunas = int.Parse(str);
+            // Pedir nº de colunas e converter para inteiro
+            Console.Write("Insira nº de colunas da matriz: ");
+            aux = Console.ReadLine();
+            numColunas = Convert.ToInt32(aux);
 
-            matriz = new float[linhas, colunas];
+            // Inicializar a matriz (array bidimensional)
+            matriz = new float[numLinhas, numColunas];
 
-            for (int i = 0; i< matriz.GetLength(0); i++);
+            // Pedir valores da matriz
+            for (int i = 0; i < numLinhas; i++) // Percorrer linhas
             {
-                for(int j = 0; j < matriz.GetLength(1); j++);
+                for (int j = 0; j < numColunas; j++) // Percorrer colunas
                 {
-                    Console.WriteLine($"Insira um valor em ({i}, {j}): ");
-                    me = Console.ReadLine();
-                    matriz[i, j] = Convert.ToSingle(str);
+                    // Solicitar valor para linha i e coluna j
+                    Console.Write($"Insere valor em ({i},{j}): ");
+                    aux = Console.ReadLine();
 
+                    // Converter valor pedido para formato float (Single)
+                    matriz[i, j] = Convert.ToSingle(aux);
                 }
             }
 
-            for (int i = 0; i< matriz.GetLength(0); i++);
+            // Mostrar matriz e médias de cada linha
+            Console.WriteLine("\nMatriz inserida e respetivas médias:");
+
+            for (int i = 0; i < numLinhas; i++) // Percorrer linhas
             {
-                float soma = 0, media;
-                Console.WriteLine("| ");
-                for(int j = 0; j < matriz.GetLength(1); j++);
+                // Declaração e inicialização da variável onde vamos guardar a
+                // soma dos valores na linha atual
+                float somaDaLinha = 0;
+                float mediaDaLinha;
+
+                // Mostrar caráter de início de linha
+                Console.Write("| ");
+
+                for (int j = 0; j < numColunas; j++) // Percorrer colunas
                 {
-                    soma += matriz[i, j];
-                    Console.WriteLine($"{matriz[i, j], 10.f2} ");
-                    
+                    // Mostrar o valor na linha/coluna atuais
+                    Console.Write("{0,10:f2}", matriz[i, j]);
+
+                    // Adicionar valor atual à soma da linha atual
+                    somaDaLinha += matriz[i, j];
                 }
-                media = soma / matriz.GetLength(1);
-                Console.WriteLine($"| -> {soma / matriz.GetLength(1) }");
-                somaDasMedias += media; 
-    
+
+                // Mostrar caráter de fim de linha de matriz
+                Console.Write(" | ");
+
+                // Calcular media da linha
+                mediaDaLinha = somaDaLinha / numColunas;
+
+                // Mostrar a média da linha
+                Console.WriteLine(
+                    $"-> Média = {mediaDaLinha,10:f3}");
+
+                // Adicionar a média da linha à soma das médias
+                somaDasMedias += mediaDaLinha;
             }
 
-            Console.WriteLine("Soma das medias: {0, 10:f3}", somaDasMedias);
-            
+            // Mostrar soma das médias
+            Console.WriteLine($"\nSoma das médias: {somaDasMedias:f3}");
+
         }
     }
 }
